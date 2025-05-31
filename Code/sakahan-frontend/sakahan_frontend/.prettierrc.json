@@ -1,0 +1,24 @@
+{
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^[^./].*\\.css$",
+    "^[.]/[-a-zA-Z0-9_]+[.]css$",
+    "^[.]/[-a-zA-Z0-9_]+[.](module)[.](css|scss|less)$",
+    "^[./].*(?<!\\.(c|le|sc)ss)$",
+    "<THIRD_PARTY_MODULES>",
+    "^react",
+    "^next",
+    "^@mui/(.*)$",
+    "^@/components/(.*)$",
+    "^@/constants$",
+    "^@/enums$",
+    "^@/lib$",
+    "^@/provider$",
+    "^@/types$",
+    "^@/state/(.*)$"
+  ],
+  "importOrderSortSpecifiers": true,
+  "endOfLine": "crlf",
+  "printWidth": 120
+}
+

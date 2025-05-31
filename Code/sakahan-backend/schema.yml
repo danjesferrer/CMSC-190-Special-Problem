@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: SAKAHAN API
+  version: 1.0.0
+  description: The API documentation for the Web-GIS SAKAHAN Application
+paths:
+  /crops/:
+    get:
+      operationId: crops_list
+      tags:
+      - crops
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Crop'
+          description: ''
+    post:
+      operationId: crops_create
+      tags:
+      - crops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Crop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Crop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Crop'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crop'
+          description: ''
+  /crops/{id}/:
+    get:
+      operationId: crops_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this crop.
+        required: true
+      tags:
+      - crops
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crop'
+          description: ''
+    put:
+      operationId: crops_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this crop.
+        required: true
+      tags:
+      - crops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Crop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Crop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Crop'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crop'
+          description: ''
+    patch:
+      operationId: crops_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this crop.
+        required: true
+      tags:
+      - crops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCrop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCrop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCrop'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crop'
+          description: ''
+    delete:
+      operationId: crops_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this crop.
+        required: true
+      tags:
+      - crops
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Crop:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - id
+      - name
+    PatchedCrop:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

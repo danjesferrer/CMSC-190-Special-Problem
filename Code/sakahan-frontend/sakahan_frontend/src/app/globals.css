@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #faf3e0;
+  --primary: #00695c;
+  --secondary: #8d6e63;
+  --tertiary: #424242;
+  --quaternary: #757575;
+  --divider: #e0e0e0;
+  --approved: #4caf50;
+  --pending: #ff9800;
+  --rejected: #d32f2f;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #303030;
+    --foreground: #e8e1ce;
+  }
+} */
+
+/* body { */
+/* color: var(--foreground);
+  background: var(--background); */
+/* font-family: "Poppins", serif; */
+/* } */
+
+/* width */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--divider);
+  border-radius: 0px 12px 12px 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 0px 12px 12px 0px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@layer components {
+  .card {
+    @apply z-[1000] shadow-2xl rounded-xl border-2 border-divider bg-background p-2;
+  }
+}
